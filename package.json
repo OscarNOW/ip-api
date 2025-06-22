@@ -1,0 +1,5 @@
+{
+  "name": "ip-api",
+  "module": "index.js",
+  "type": "module"
+}
