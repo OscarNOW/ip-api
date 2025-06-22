@@ -22,14 +22,11 @@ You can get your IP address by performing a `GET /` request. You can provide mul
 
 For the `js` format you can add `&callbackname=your_js_function_name` and replace `your_js_function_name` with your own Javascript function to use for the callback, otherwise `ipcallback` is used.
 
-### CORS
-
-The CORS is set to accept all domains
-
 ## Options
 Below is a table of the environment variables that control this API:
 
-| Environment variable      | Value             | Default | Description                                         |
-| ------------------------- | ----------------- | ------- | --------------------------------------------------- |
-| `PORT`                    | Number            | `3000`  | The port the webserver listens on                   |
-| `BEHIND_CLOUDFLARE_PROXY` | `true` or `false` | `false` | Whether this service sits behind a Cloudflare proxy |
+| Environment variable      | Value                                                  | Default | Description                                                                                                         |
+| ------------------------- | ------------------------------------------------------ | ------- | ------------------------------------------------------------------------------------------------------------------- |
+| `PORT`                    | Number                                                 | `3000`  | The port the webserver listens on                                                                                   |
+| `BEHIND_CLOUDFLARE_PROXY` | `true` or `false`                                      | `false` | Whether this service sits behind a Cloudflare proxy                                                                 |
+| `CORS`                    | `none`, `all`, or list of origins separated by a space | `all`   | The CORS headers used on the response. `none` means there are no CORS headers, `all` means all domains are allowed. |

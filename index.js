@@ -1,10 +1,16 @@
 // © 2025 Oscar Knap - Alle rechten voorbehouden
 
 const express = require('express');
+const cors = require('cors');
 
 const env = {
     port: process.env.PORT || 3000,
-    cloudflareProxy: [true, 'true'].includes(process.env.CLOUDFLARE_PROXY ?? false)
+    cloudflareProxy: [true, 'true'].includes(process.env.CLOUDFLARE_PROXY ?? false),
+    cors:
+        process.env.CORS === 'none' ? false :
+            process.env.CORS === 'all' ? true :
+                process.env.CORS ? process.env.CORS.split(' ') :
+                    true
 };
 
 function getIp(req) {
@@ -49,6 +55,26 @@ function parseIp(ip, req) {
 }
 
 const app = express();
+
+if (env.cors !== false) {
+    const corsOptions = {
+        credentials: true, // This is important.
+        origin: (origin, callback) => {
+            console.log(origin)
+            if (origin === undefined || origin === null) return callback(null, true); // requests without a domain
+
+            if (env.cors === true) return callback(null, true);
+            if (whitelist.includes(origin)) return callback(null, true);
+
+            const error = new Error(`Not allowed by CORS "${origin}"`);
+
+            console.warn(error);
+            callback(error);
+        }
+    };
+
+    app.use(cors(corsOptions));
+}
 
 app.use('/', (req, res, next) => {
     if (req.path !== '/') {

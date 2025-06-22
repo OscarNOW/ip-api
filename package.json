@@ -4,6 +4,7 @@
   "author": "Oscar",
   "description": "A very simple to use API to get your IP address",
   "dependencies": {
+    "cors": "^2.8.5",
     "express": "^5.1.0"
   }
 }
