@@ -1,7 +1,9 @@
 {
   "name": "ip-api",
   "module": "index.js",
-  "type": "module",
   "author": "Oscar",
-  "description": "A very simple to use API to get your IP address"
+  "description": "A very simple to use API to get your IP address",
+  "dependencies": {
+    "express": "^5.1.0"
+  }
 }
