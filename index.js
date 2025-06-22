@@ -60,7 +60,6 @@ if (env.cors !== false) {
     const corsOptions = {
         credentials: true, // This is important.
         origin: (origin, callback) => {
-            console.log(origin)
             if (origin === undefined || origin === null) return callback(null, true); // requests without a domain
 
             if (env.cors === true) return callback(null, true);
