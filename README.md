@@ -13,7 +13,7 @@ You can get your IP address by performing a `GET /` request. You can provide mul
 | `text` *(default)* | `12.34.567.89`                   |
 | `json`             | `{ "ip": "12.34.567.89" }`       |
 | `xml`              | `<ip>12.34.567.89</ip>`          |
-| `js`               | `ipcallback("12.34.567.89")`     |
+| `js`               | `ipcallback("12.34.567.89");`    |
 | `html`             | `<p>12.34.567.89</p>`            |
 | `yaml`             | `ip: 12.34.567.89`               |
 | `csv`              | `ip \n 12.34.567.89`             |
@@ -29,6 +29,7 @@ The CORS is set to accept all domains
 ## Options
 Below is a table of the environment variables that control this API:
 
-| Environment variable      | Values          | Description                                         |
-| ------------------------- | --------------- | --------------------------------------------------- |
-| `BEHIND_CLOUDFLARE_PROXY` | `true`, `false` | Whether this service sits behind a Cloudflare proxy |
+| Environment variable      | Value             | Default | Description                                         |
+| ------------------------- | ----------------- | ------- | --------------------------------------------------- |
+| `PORT`                    | Number            | `3000`  | The port the webserver listens on                   |
+| `BEHIND_CLOUDFLARE_PROXY` | `true` or `false` | `false` | Whether this service sits behind a Cloudflare proxy |
